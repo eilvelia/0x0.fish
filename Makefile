@@ -1,3 +1,6 @@
+.PHONY: all
+all: 0x0 test
+
 0x0: functions/0x0.fish
 	./generate-0x0.sh
 
