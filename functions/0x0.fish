@@ -71,7 +71,9 @@ function "0x0" --description "Paste to 0x0.st"
   if set -q argv[1]; and test "$argv[1]" != '-'
     set -f file $argv[1]
     if string match -qr '^https?://' "$argv[1]"
-      if string match -q "$instance*" "$argv[1]"
+      set -l instance_no_slash (string replace -r '/?$' '' -- "$instance")
+      if string match -q "$instance_no_slash/*" "$argv[1]"
+         or test "$instance_no_slash" = "$argv[1]"
         set -f is_instance_url true
       else
         set -f is_remote_url true
