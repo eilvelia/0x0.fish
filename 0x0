@@ -82,6 +82,10 @@ function "0x0" --description "Paste to 0x0.st"
       set -f name (basename -- "$argv[1]")
     end
   end
+  if set -q argv[2]; and not set -q _flag_curl_args
+    echo "0x0: too many arguments" >&2
+    return 1
+  end
   set -q _flag_copy; and set -f copy $_flag_copy
   set -q _flag_curl_args; and set -f allow_additional_curl_args $_flag_curl_args
   set -q _flag_delete; and set -f delete $_flag_delete
