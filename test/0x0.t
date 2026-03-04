@@ -1,7 +1,7 @@
   $ alias 0x0="$TESTDIR/../0x0"
 
   $ 0x0 --version
-  0.1.0
+  0.1.1
 
   $ 0x0 --dry-run
   curl --fail --show-error --no-progress-meter -F 'file=@-;filename=paste.txt' -F secret= https://0x0.st

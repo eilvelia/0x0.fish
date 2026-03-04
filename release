@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+VERSION="${1?Usage: $0 <version>}"
+
+sed -i "s/set -f 0x0_version \".*\"/set -f 0x0_version \"$VERSION\"/" functions/0x0.fish
+sed -i "s/version = \".*\";/version = \"$VERSION\";/" package.nix
+sed -i "0,/  [0-9]\+\.[0-9]\+\.[0-9]\+/s/  [0-9]\+\.[0-9]\+\.[0-9]\+/  $VERSION/" test/0x0.t
+sed -i "s/0x0\.fish v[0-9]\+\.[0-9]\+\.[0-9]\+/0x0.fish v$VERSION/" README.md
+
+make all
+
+git add functions/0x0.fish package.nix test/0x0.t ./0x0 README.md
+
+git commit -m "v$VERSION"
+
+git tag -m "Release $VERSION" "v$VERSION"

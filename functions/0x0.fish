@@ -1,5 +1,5 @@
 function "0x0" --description "Paste to 0x0.st"
-  set -f 0x0_version "0.1.0"
+  set -f 0x0_version "0.1.1"
   argparse \
     --exclusive e,d \
     'T/show-token' \

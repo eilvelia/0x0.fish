@@ -30,7 +30,7 @@ If you do not use fish as your shell, grab the [0x0](./0x0) file.
 ## Usage
 
 ```
-0x0.fish v0.1.0
+0x0.fish v0.1.1
 
 Usage: 0x0 [OPTIONS] [FILE | REMOTE_URL | INSTANCE_URL]
 
