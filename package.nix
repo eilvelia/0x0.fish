@@ -15,6 +15,10 @@ stdenv.mkDerivation {
 
   doCheck = true;
 
+  postPatch = ''
+    patchShebangs 0x0
+  '';
+
   installPhase = ''
     mkdir -p $out/share/fish/functions $out/share/fish/vendor_completions.d $out/bin
     cp functions/*.fish $out/share/fish/functions/
@@ -23,7 +27,6 @@ stdenv.mkDerivation {
   '';
 
   checkPhase = ''
-    patchShebangs 0x0
     HOME=$(mktemp -d) cram test/0x0.t
   '';
 
